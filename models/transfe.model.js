@@ -25,19 +25,26 @@ const transferenciaDos = async (emisor, receptor, monto) => {
         values: [monto, receptor]
     }
 
+
+    try {
+        await pool.query('BEGIN');
+        const { rows } = await pool.query(querySql);
+        await pool.query(querySqlDos);
+        await pool.query(querySqlTres);
+        await pool.query('COMMIT');
+        return rows[0]
+
+
+
+    } catch (error) {
+        await pool.query('ROOLBACK')
+        throw error
+
+    }
 }
-try {
-    await pool.query('BEGIN');
-    const { rows } = await pool.query(querySql);
-    await pool.query(querySqlDos);
-    await pool.query(querySqlTres);
-    await pool.query('COMMIT');
-    return rows[0]
 
 
-
-} catch (error) {
-    await pool.query('ROOLBACK')
-    throw error
-
+export const transferenciaModel = {
+    transferencia,
+    transferenciaDos
 }
