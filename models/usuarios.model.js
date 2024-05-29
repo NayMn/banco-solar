@@ -7,7 +7,7 @@ const leerUsuarios = async () => {
 
 const registrarUsuarios = async (nombre, balance) => {
     const querySql = {
-        text: 'INSER INTO usuarios (nombre, balance) values ($1, $2) RETURNING *;',
+        text: 'INSERT INTO usuarios (nombre, balance) values ($1, $2) RETURNING *;',
         values: [nombre, balance]
     }
     const { rows } = await pool.query(querySql)
@@ -16,7 +16,7 @@ const registrarUsuarios = async (nombre, balance) => {
 
 const actualizarUsuarios = async (id, nombre, balance) => {
     const querySql = {
-        text: 'UPDATE SET nombre = $1, balance = $2 WHERE id = $3 RETURNING *;',
+        text: 'UPDATE usuarios SET nombre = $1, balance = $2 WHERE id = $3 RETURNING *;',
         values: [nombre, balance, id]
     }
     const { rows } = await pool.query(querySql)

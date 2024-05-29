@@ -17,7 +17,7 @@ const transferenciaDos = async (emisor, receptor, monto) => {
         values: [emisor, receptor, monto]
     }
     const querySqlDos = {
-        text: 'UPDATE usuarios SET balance = balance - $1 WHERE id - $2',
+        text: 'UPDATE usuarios SET balance = balance - $1 WHERE id = $2',
         values: [monto, emisor]
     }
     const querySqlTres = {

@@ -3,6 +3,7 @@ import { usuariosModel } from "../models/usuarios.model.js";
 const verUsuarios = async (req, res) => {
     try {
         const usuarios = await usuariosModel.leerUsuarios()
+        return res.json(usuarios)
     } catch (error) {
         console.log(error)
         return res.status(500).json({
