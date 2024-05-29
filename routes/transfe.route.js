@@ -5,4 +5,4 @@ const router = Router()
 router.get('/transferecias', transfeController.transfer)
 router.post('/transferencia', transfeController.transferNew)
 
-export default router
+export const routerTrasfe = router

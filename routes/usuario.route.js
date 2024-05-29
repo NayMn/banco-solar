@@ -7,4 +7,4 @@ router.post('/usuario', usuariosController.crearUsuario)
 router.put('/usuario/:id', usuariosController.editarUsuario)
 router.delete('/usuario/id', usuariosController.removerUsuario)
 
-export default router
+export const routerUsuario = router
